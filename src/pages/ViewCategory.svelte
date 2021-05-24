@@ -1,0 +1,29 @@
+<script lang="ts">
+    import {mainBar, navBar, subTitle, title} from "../stores";
+    import PoiShow from "../components/PoiShow.svelte";
+    import PoiUpdate from "../components/PoiUpdate.svelte";
+    import ViewCategoryPoi from "../components/ViewCategoryPoi.svelte";
+    import Report from "../components/Report.svelte";
+    import CategoryList from "../components/CategoryList.svelte";
+
+    title.set("POI - Lighthouses of Ireland");
+    subTitle.set("Add a POI");
+    navBar.set({
+        bar: mainBar
+    });
+</script>
+
+<div>
+    <Report/>
+</div>
+
+<div class="uk-text-center" uk-grid>
+    <div class="uk-width-auto@m">
+        <div class="uk-card uk-card-default uk-card-body"><CategoryList/></div>
+    </div>
+    <div class="uk-width-expand@m">
+        <div class="uk-card uk-card-default uk-card-body">
+            <ViewCategoryPoi/>
+        </div>
+    </div>
+</div>
