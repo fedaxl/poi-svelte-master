@@ -103,11 +103,11 @@ export class PoiService {
             if (response.data.success) {
                 user.set({
                     email: email,
-                    token: response.data.token,
                     id: response.data.id,
                     firstName: response.data.firstName,
                     lastName: response.data.lastName,
-                    password: response.data.password
+                    password: response.data.password,
+                    token: response.data.token
                 });
                 localStorage.poi = JSON.stringify(response.data.token);
                 return true;
@@ -140,17 +140,19 @@ export class PoiService {
             return false;
         }
     }
-    /*
-    async login(email, password) {
-        try {
-            const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
-            user.set(response.data);
-            return response.status == 200;
-        } catch (error) {
-            return false;
-        }
+
+
+    async logout() {
+        user.set({
+            email: "",
+            firstName: "",
+            lastName: "",
+            token: ""
+    });
+        axios.defaults.headers.common["Authorization"] = "";
+        localStorage.poi = null;
     }
-         */
+
 
     async addPoi(name, description, latitude, longitude, category) {
         try {
@@ -197,15 +199,12 @@ export class PoiService {
             console.log(poiDetails);
             const response = await axios.put(`${this.baseUrl}/api/pois/${id}`, poiDetails);
             console.log(response.data)
-            //const newUser = await response.data;
-            //console.log(newUser);
-            //user.set(userDetails);  //should this update only if response success is true?
-            //console.log(user);
+            const newPoi = await response.data;
+            poi.set(newPoi);
             return true;
         } catch (error) {
             return false;
         }
-
 
 }
 
@@ -250,49 +249,23 @@ export class PoiService {
             console.log(userDetails);
             const response = await axios.put(`${this.baseUrl}/api/users/${id}`, userDetails);
             console.log(response.data)
-            //const newUser = await response.data;
-            //console.log(newUser);
-            user.set(userDetails);  //should this update only if response success is true?
-            //console.log(user);
+            const newUser = await response.data;
+            user.set(newUser);
             return true;
         } catch (error) {
             return false;
         }
     }
 
-    async logout() {
-        user.set({
-            email: "",
-            token: "",
-            firstName: "",
-            lastName: ""
-        });
-        axios.defaults.headers.common["Authorization"] = "";
-        localStorage.poi = null;
-    }
 
-    /*
-    async logout() {
-        user.set({
-            email: "",
-         //   token: "",
-            firstName: "",
-            lastName: "",
-        });
-       // axios.defaults.headers.common["Authorization"] = "";
-       // localStorage.donation = null;
-    }
 
-     */
     async deletePoi(id) {
         try {
             console.log("in the poi-service deletePOi")
             const response = await axios.delete(`${this.baseUrl}/api/pois/${id}`);
             console.log(response.data)
-            //const newUser = await response.data;
-            //console.log(newUser);
-            //user.set(userDetails);  //should this update only if response success is true?
-            //console.log(user);
+            const newPoi = await response.data;
+            user.set(newPoi);
             return true;
         } catch (error) {
             return false;
@@ -304,10 +277,8 @@ export class PoiService {
             console.log("in the poi-service deleteUser")
             const response = await axios.delete(`${this.baseUrl}/api/users/${id}`);
             console.log(response.data)
-            //const newUser = await response.data;
-            //console.log(newUser);
-            //user.set(userDetails);  //should this update only if response success is true?
-            //console.log(user);
+            const newUser = await response.data;
+            user.set(newUser);
             return true;
         } catch (error) {
             return false;
@@ -319,10 +290,6 @@ export class PoiService {
             console.log("in the poi-service deleteCategory")
             const response = await axios.delete(`${this.baseUrl}/api/categories/${id}`);
             console.log(response.data)
-            //const newUser = await response.data;
-            //console.log(newUser);
-            //user.set(userDetails);  //should this update only if response success is true?
-            //console.log(user);
             return true;
         } catch (error) {
             return false;
