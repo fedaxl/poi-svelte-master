@@ -4,8 +4,8 @@
     import AddCategoryForm from "../components/AddCategoryForm.svelte";
     import {onMount} from "svelte";
 
-    title.set("Keep Calm and gp tp the Beach");
-    subTitle.set("Add Something!");
+    title.set("POI - Lighthouses of Ireland");
+    subTitle.set("Add a POI");
     navBar.set({
         bar: mainBar
     });
