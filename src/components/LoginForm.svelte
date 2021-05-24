@@ -25,9 +25,6 @@
             }
         }
     }
-    //async function login() {
-     //   push("/pois");
-   // }
 </script>
 
 <form on:submit|preventDefault={login}>
