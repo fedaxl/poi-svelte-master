@@ -101,7 +101,7 @@ export class PoiService {
             const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             if (response.data.success) {
-                /*user.set({
+                user.set({
                     email: email,
                     token: response.data.token,
                     id: response.data.id,
@@ -109,7 +109,7 @@ export class PoiService {
                     lastName: response.data.lastName,
                     password: response.data.password
                 });
-                localStorage.poi = JSON.stringify(response.data.token); */
+                localStorage.poi = JSON.stringify(response.data.token);
                 return true;
             }
             return false;
@@ -124,7 +124,7 @@ export class PoiService {
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             console.log(response);
             if (response.data.success) {
-               /* user.set({
+               user.set({
                     email: email,
                     token: response.data.token,
                     id: response.data.id,
@@ -132,7 +132,7 @@ export class PoiService {
                     lastName: response.data.lastName,
                     password: response.data.password
                 });
-                localStorage.poi = JSON.stringify(response.data.token); */
+                localStorage.poi = JSON.stringify(response.data.token);
                 return true;
             }
             return false;
@@ -152,11 +152,10 @@ export class PoiService {
     }
          */
 
-    async addPoi(name, descshort, description, latitude, longitude, category) {
+    async addPoi(name, description, latitude, longitude, category) {
         try {
             const poi = {
                 name: name,
-                descshort: descshort,
                 description: description,
                 latitude: latitude,
                 longitude: longitude,
@@ -184,11 +183,10 @@ export class PoiService {
         }
     }
 
-    async updatePoi(name, descshort, description, latitude, longitude, id, category){
+    async updatePoi(name, description, latitude, longitude, id, category){
         try {
             const poiDetails = {
                 name: name,
-                descshort: descshort,
                 description: description,
                 latitude: latitude,
                 longitude: longitude,
