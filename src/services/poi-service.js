@@ -1,5 +1,6 @@
 import axios from "axios";
-import {user, category} from "../stores";
+import {user} from "../stores";
+import {category} from "../stores";
 import {poi} from "../stores"
 
 export class PoiService {
