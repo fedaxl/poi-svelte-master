@@ -1,6 +1,6 @@
 <script>
     import {title, subTitle, navBar, welcomeBar} from "../stores"
-    import lighthouse from "/src/assets/lighthouse.png";
+    import background from "/src/assets/background.jpg";
     import {getContext} from "svelte";
     import Images from "../components/Images.svelte";
 
@@ -13,10 +13,8 @@
     });
     poiService.logout();
 </script>
-
-<div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="{lighthouse}" uk-img>
-    <h1>POI - Lighthouses </h1>
-    <h2>location:</h2>
+<h1>POI - Lighthouses </h1>
+<div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="{background}" uk-img>
 </div>
 <div class="uk-container uk-padding-small">
     <Images/>
