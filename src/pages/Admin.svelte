@@ -2,7 +2,7 @@
     import PoiList from "../components/PoiList.svelte";
     import CategoryList from "../components/CategoryList.svelte";
     import {navBar, adminBar, subTitle, title} from "../stores"
-    import AnalyticsHeader from "../components/Report.svelte";
+    import Report from "../components/Report.svelte";
     import UserAdmin from "../components/UserAdmin.svelte";
     import CategoryAdmin from "../components/CategoryAdmin.svelte";
 
@@ -15,7 +15,7 @@
 </script>
 
 <div>
-    <AnalyticsHeader/>
+    <Report/>
 </div>
 
 <div class="uk-container uk-margin">

@@ -2,7 +2,7 @@
     import PoiList from "../components/PoiList.svelte";
     import CategoryList from "../components/CategoryList.svelte";
     import {navBar, mainBar, subTitle, title} from "../stores"
-    import AnalyticsHeader from "../components/Report.svelte";
+    import Report from "../components/Report.svelte";
 
 
     title.set("POI - Lighthouses of Ireland");
@@ -13,7 +13,7 @@
 </script>
 
 <div>
-    <AnalyticsHeader/>
+    <Report/>
 </div>
 
 <div class="uk-text-center" uk-grid>

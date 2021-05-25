@@ -23,15 +23,15 @@
     "/" : Main,
     "/login": Login,
     "/categories": Categories,
-    "/pois": Pois,
-    "/viewpoi": ViewPoi,
+    "/home": Pois,
+    "/view-poi/{id}": ViewPoi,
     "/addpoi": AddPoi,
-    "/categoryform": AddCategory,
-    "/viewcategory": ViewCategory,
+    "/add-category": AddCategory,
+    "/filter-category": ViewCategory,
     "/settings": Settings,
     "/signup": Signup,
     "/logout": Main,
-    "/admin": Admin,
+    "/admin-dashboard": Admin,
     "/map": Map
   }
 </script>
