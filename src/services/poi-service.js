@@ -99,7 +99,7 @@ export class PoiService {
 
     async login(email, password) {
         try {
-            const response = await axios.post(`${this.baseUrl}api/users/authenticate`, {email, password});
+            const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             if (response.data.success) {
                 user.set({
