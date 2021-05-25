@@ -58,12 +58,8 @@ export const adminBar = [{
     icon: "fas fa-user-edit fa-3x",
     colour: "color:rgb(14, 168, 160)",
     link: "/#/settings",
-}, { */
-    title: "Admin",
-    icon: "fas fa-users-cog fa-3x",
-    colour: "color:rgb(14, 168, 160)",
-    link: "/#/admin",
-    }, {
+}, {
+ */
     title: "Logout",
     icon: "fas fa-sign-out-alt fa-3x",
     colour: "color:rgb(156, 70, 128)",

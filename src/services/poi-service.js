@@ -119,30 +119,6 @@ export class PoiService {
         }
     }
 
-   /* async adminlogin(email, password) {
-        try {
-            const response = await axios.post(`${this.baseUrl}/api/adminusers/authenticate`, {email, password});
-            axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
-            console.log(response);
-            if (response.data.success) {
-               user.set({
-                    email: email,
-                    token: response.data.token,
-                    id: response.data.id,
-                    firstName: response.data.firstName,
-                    lastName: response.data.lastName,
-                    password: response.data.password
-                });
-                localStorage.poi = JSON.stringify(response.data.token);
-                return true;
-            }
-            return false;
-        } catch (error) {
-            return false;
-        }
-    }
-*/
-
     async logout() {
         user.set({
             email: "",

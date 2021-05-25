@@ -11,7 +11,6 @@
   import ViewCategory from "./pages/ViewCategory.svelte";
   import Settings from "./pages/Settings.svelte";
   import Signup from "./pages/Signup.svelte";
-  import Admin from "./pages/Admin.svelte";
   import Map from "./pages/Map.svelte";
   import Navigator from "./components/Navigator.svelte";
   import Router from "svelte-spa-router";
@@ -31,7 +30,6 @@
     "/settings": Settings,
     "/signup": Signup,
     "/logout": Main,
-    //"/admin-dashboard": Admin,
     "/map": Map
   }
 </script>
