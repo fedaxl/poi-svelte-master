@@ -5,13 +5,13 @@ export const welcomeBar = [
         title: "Join Us",
         icon: "fas fa-user-cog fa-3x",
         colour: "color:rgb(70,130,180)",
-        link: "/#/signup",
+        link: "/signup",
     },
     {
         title: "Login",
         icon: "fas fa-user-edit fa-3x",
         colour: "color:rgb(0,191,255)",
-        link: "/#/login",
+        link: "/login",
     },
 ];
 
