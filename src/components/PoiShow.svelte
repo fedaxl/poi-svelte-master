@@ -83,7 +83,7 @@
     </div>
     <div class="uk-text-center uk-flex-center uk-flex-middle" uk-grid>
         <div class="uk-width-2-3">
-            <div class="uk-card uk-card-default uk-card-body"><img src="{poiView.poi.imageurl}"></div>
+            <div class="uk-card uk-card-default uk-card-body"><img src="{poiView.poi.image}"></div>
         </div>
         <div class="uk-width-1-3">
             <div class="uk-card uk-card-default uk-card-body">{description}</div>
@@ -161,13 +161,12 @@
     {/if}
 </form>
 
-<div class="uk-card uk-card-small uk-card-secondary uk-card-body">
-    <h3 class="uk-card-title">Upload an Image:</h3>
-    <form class="uk-form-horizontal" action="/uploadfile/{$poi.id}" method="POST" enctype="multipart/form-data">
+<div class="uk-card uk-card-primary uk-card-body">
+    <h3 class="uk-card-title">Upload a new Image to the Gallery</h3>
+    <form class="uk-form" action="/addimage/{poi.id}" method="POST" enctype="multipart/form-data">
         <div class="uk-margin">
-            <label class="uk-form-label" >Select Image</label>
             <div class="uk-form-controls">
-                <input type="file" class="uk-input" name="imagefile" accept="image/png, image/jpeg">
+                <input type="file" class="uk-input" name="image" accept="image/png, image/jpeg">
             </div>
         </div>
         <p uk-margin>
