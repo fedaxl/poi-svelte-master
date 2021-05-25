@@ -17,7 +17,7 @@ export class PoiService {
 
     async getCategories() {
         try {
-            const response = await axios.get(this.baseUrl + "api/categories")
+            const response = await axios.get(this.baseUrl + "/api/categories")
             this.categoryList = await response.data;
             return this.categoryList;
         } catch (error) {
@@ -27,7 +27,7 @@ export class PoiService {
 
     async getPois() {
         try {
-            const response = await axios.get(this.baseUrl + "api/pois")
+            const response = await axios.get(this.baseUrl + "/api/pois")
             this.poiList = await response.data;
             return this.poiList;
         } catch (error) {
@@ -37,7 +37,7 @@ export class PoiService {
 
     async getImages() {
         try {
-            const response = await axios.get(this.baseUrl + "api/pois/images")
+            const response = await axios.get(this.baseUrl + "/api/pois/addimage")
             this.imageList = await response.data;
             return this.imageList;
         } catch (error) {
@@ -47,7 +47,7 @@ export class PoiService {
 
     async getUsers() {
         try {
-            const response = await axios.get(this.baseUrl + "api/users")
+            const response = await axios.get(this.baseUrl + "/api/users")
             this.userList = await response.data;
             return this.userList;
         } catch (error) {
@@ -57,7 +57,7 @@ export class PoiService {
 
     async getOnePoi(id) {
         try {
-            const response = await axios.get(this.baseUrl + "api/pois/"+id)
+            const response = await axios.get(this.baseUrl + "/api/pois/"+id )
             this.poi = await response.data;
             poi.set({
                 id: id
@@ -71,7 +71,7 @@ export class PoiService {
 
     async getOneCategory(id) {
         try {
-            const response = await axios.get(this.baseUrl + "api/categories/"+id)
+            const response = await axios.get(this.baseUrl + "/api/categories/"+id)
             this.category = await response.data;
             category.set({
                 id: id
@@ -85,7 +85,7 @@ export class PoiService {
 
     async getCategoryPois(id) {
         try {
-            const response = await axios.get(this.baseUrl + "api/categories/"+id+"/pois")
+            const response = await axios.get(this.baseUrl + "/api/pois/"+id+"/category")
             this.poiCategoryList = await response.data;
             category.set({
                 id: id
@@ -99,7 +99,7 @@ export class PoiService {
 
     async login(email, password) {
         try {
-            const response = await axios.post(`${this.baseUrl}api/users/authenticate`, {email, password});
+            const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             if (response.data.success) {
                 user.set({
@@ -121,7 +121,7 @@ export class PoiService {
 
     async adminlogin(email, password) {
         try {
-            const response = await axios.post(`${this.baseUrl}api/adminusers/authenticate`, {email, password});
+            const response = await axios.post(`${this.baseUrl}/api/adminusers/authenticate`, {email, password});
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             console.log(response);
             if (response.data.success) {
@@ -164,7 +164,7 @@ export class PoiService {
                 longitude: longitude,
                 category: category,
             };
-            const response = await axios.post(this.baseUrl + "api/categories/" + category._id + "/pois", poi);
+            const response = await axios.post(this.baseUrl + "/api/categories/" + category._id + "/pois", poi);
             return response.status == 200;
         } catch (error) {
             return false;
@@ -178,7 +178,7 @@ export class PoiService {
                 description: description,
             };
             console.log(category);
-            const response = await axios.post(this.baseUrl + "api/categories", category);
+            const response = await axios.post(this.baseUrl + "/api/categories", category);
             console.log(response);
             return response.status == 200;
         } catch (error) {
@@ -198,7 +198,7 @@ export class PoiService {
             };
             console.log(id);
             console.log(poiDetails);
-            const response = await axios.put(`${this.baseUrl}api/pois/${id}`, poiDetails);
+            const response = await axios.put(`${this.baseUrl}/api/pois/update/${id}`, poiDetails);
             console.log(response.data)
             const newPoi = await response.data;
             poi.set(newPoi);
@@ -217,7 +217,7 @@ export class PoiService {
                 email: email,
                 password: password,
             };
-            const response = await axios.post(this.baseUrl + "api/users", userDetails);
+            const response = await axios.post(this.baseUrl + "/api/users", userDetails);
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             if (response.data.success) {
                 user.set({
@@ -248,7 +248,7 @@ export class PoiService {
             };
             console.log(id);
             console.log(userDetails);
-            const response = await axios.put(`${this.baseUrl}api/users/${id}`, userDetails);
+            const response = await axios.put(`${this.baseUrl}/api/users/${id}`, userDetails);
             console.log(response.data)
             const newUser = await response.data;
             user.set(newUser);
@@ -263,7 +263,7 @@ export class PoiService {
     async deletePoi(id) {
         try {
             console.log("in the poi-service deletePOi")
-            const response = await axios.delete(`${this.baseUrl}api/pois/${id}`);
+            const response = await axios.delete(`${this.baseUrl}/api/pois/${id}`);
             console.log(response.data)
             const newPoi = await response.data;
             user.set(newPoi);
@@ -276,7 +276,7 @@ export class PoiService {
     async deleteUser(id) {
         try {
             console.log("in the poi-service deleteUser")
-            const response = await axios.delete(`${this.baseUrl}api/users/${id}`);
+            const response = await axios.delete(`${this.baseUrl}/api/users/${id}`);
             console.log(response.data)
             const newUser = await response.data;
             user.set(newUser);
