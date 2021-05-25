@@ -6,6 +6,7 @@
     let categoryList = [];
     let name = "";
     let description = "";
+    let category = "";
     let latitude = 0;
     let longitude = 0;
     let selectedCategory = 0;
@@ -16,7 +17,7 @@
     });
 
     async function addPoi() {
-        const success = await poiService.addPoi(name, description, latitude, longitude, categoryList[selectedCategory])
+        const success = await poiService.addPoi(name, description, category, latitude, longitude, categoryList[selectedCategory])
         if (success) {
             await push("/pois");
 
@@ -37,9 +38,15 @@
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-text">Enter a Description</label>
                 <div class="uk-form-controls">
-                <input bind:value={description} class="uk-input" id="rm-stacked-text" type="text" name="description" placeholder="Short Description">
+                <input bind:value={description} class="uk-input" id="rm-stacked-text" type="text" name="description" placeholder="Description">
             </div>
              </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-text">Enter a Description</label>
+                <div class="uk-form-controls">
+                    <input bind:value={category} class="uk-input" id="rm-stacked-text" type="text" name="category" placeholder="Category">
+                </div>
+            </div>
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-text">Enter Latitude</label>
                 <div class="uk-form-controls">

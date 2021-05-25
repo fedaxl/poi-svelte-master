@@ -57,7 +57,7 @@ export class PoiService {
 
     async getOnePoi(id) {
         try {
-            const response = await axios.get(this.baseUrl + "/api/pois/"+id )
+            const response = await axios.get(this.baseUrl + "/api/pois/" + id )
             this.poi = await response.data;
             poi.set({
                 id: id
@@ -71,7 +71,7 @@ export class PoiService {
 
     async getOneCategory(id) {
         try {
-            const response = await axios.get(this.baseUrl + "/api/categories/"+id)
+            const response = await axios.get(this.baseUrl + "/api/categories/"+ id)
             this.category = await response.data;
             category.set({
                 id: id
@@ -85,7 +85,7 @@ export class PoiService {
 
     async getCategoryPois(id) {
         try {
-            const response = await axios.get(this.baseUrl + "/api/pois/"+id+"/category")
+            const response = await axios.get(this.baseUrl + "/api/pois/"+ id +"/category")
             this.poiCategoryList = await response.data;
             category.set({
                 id: id
@@ -193,7 +193,7 @@ export class PoiService {
                 email: email,
                 password: password,
             };
-            const response = await axios.post(this.baseUrl + "api/users", userDetails);
+            const response = await axios.post(this.baseUrl + "/api/users", userDetails);
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             if (response.data.success) {
                 user.set({

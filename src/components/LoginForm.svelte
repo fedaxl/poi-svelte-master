@@ -14,10 +14,10 @@
         if (success) {
             await push("/pois");
         } else {
-            let success = await poiService.adminlogin(email, password)
+            let success = await poiService.isadmin(email, password)
             console.log(success);
             if (success) {
-                await push("/admin");
+                await push("/admin-dashboard");
             } else {
                 email = "";
                 password = "";
