@@ -8,7 +8,7 @@
         <div class="uk-width-1-6@m">
             <a href="/">
                 <div>
-                   <i class="fas fa-map-signs fa-3x" style="color:rgb(31,192,166)" title="" pos="bottom" uk-tooltip></i>
+                   <i class="fas fa-map-signs fa-3x" style="color:rgb(100,192,166)" title="" pos="bottom" uk-tooltip></i>
                 </div>
             </a>
         </div>
