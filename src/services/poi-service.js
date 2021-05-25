@@ -119,7 +119,7 @@ export class PoiService {
         }
     }
 
-    async adminlogin(email, password) {
+   /* async adminlogin(email, password) {
         try {
             const response = await axios.post(`${this.baseUrl}/api/adminusers/authenticate`, {email, password});
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
@@ -141,7 +141,7 @@ export class PoiService {
             return false;
         }
     }
-
+*/
 
     async logout() {
         user.set({

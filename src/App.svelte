@@ -31,7 +31,7 @@
     "/settings": Settings,
     "/signup": Signup,
     "/logout": Main,
-    "/admin-dashboard": Admin,
+    //"/admin-dashboard": Admin,
     "/map": Map
   }
 </script>
