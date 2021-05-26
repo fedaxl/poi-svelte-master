@@ -4,7 +4,6 @@
     const poiService = getContext("PoiService");
 
     let name = "";
-    let description = "";
     let errorMessage = "";
 
     onMount(async () => {
@@ -13,7 +12,7 @@
     });
 
     async function addCategory() {
-        const success = await poiService.addCategory(name, description)
+        const success = await poiService.addCategory(name)
         console.log(success);
         if (success) {
             await push("/pois");
@@ -26,15 +25,9 @@
     <div class="uk-grid uk-grid-stack">
         <div class="uk-width-1-2@m">
             <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Enter name</label>
+                <label class="uk-form-label" for="form-stacked-text">Enter Category Name:</label>
                 <div class="uk-form-controls">
                     <input bind:value={name} class="uk-input" id="form-stacked-text" type="text" name="name" placeholder="Name">
-                </div>
-            </div>
-            <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Enter a Description</label>
-                <div class="uk-form-controls">
-                    <input bind:value={description} class="uk-input" id="rm-stacked-text" type="text" name="description" placeholder="Short Description">
                 </div>
             </div>
              <div class="uk-margin">
