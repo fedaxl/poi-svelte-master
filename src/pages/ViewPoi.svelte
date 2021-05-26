@@ -12,5 +12,4 @@
 
 <div class="uk-flex-middle uk-text-center" uk-grid>
     <PoiShow />
-    <PoiUpdate />
 </div>

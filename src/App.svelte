@@ -23,7 +23,7 @@
     "/login": Login,
     "/categories": Categories,
     "/home": Pois,
-    "/view-poi/{id}": ViewPoi,
+    "/pois/{id}": ViewPoi,
     "/categories/{id}/pois": AddPoi,
     "/add-category": AddCategory,
     "/categories/{id}": ViewCategory,
