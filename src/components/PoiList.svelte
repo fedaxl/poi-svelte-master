@@ -30,7 +30,7 @@
         poi = await poiService.getOnePoi(id)
         if (poi) {
 
-            await push("/viewpoi");
+            await push("/view-poi");
             //return poi;
 
         } else {
@@ -43,14 +43,11 @@
 <div class="uk-margin uk-width-3xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
     <table class="uk-table uk-table-hover uk-table-divider">
         <caption>
-            Here's what we have so far:
+            POI report:
         </caption>
         <thead>
         <th>
             Name
-        </th>
-        <th>
-            Intro
         </th>
         <th>
             Category
@@ -64,9 +61,6 @@
             <tr>
                 <td><a on:click={showPoi(poi._id)}>
                     {poi.name}
-                </a></td>
-                <td><a on:click={showPoi(poi._id)}>
-                    {poi.descshort}
                 </a></td>
                 <td>
                     {#if poi.category}
