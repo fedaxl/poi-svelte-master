@@ -32,7 +32,7 @@
         poi = await poiService.getOnePoi(id)
         if (poi) {
 
-            await push("/pois/" + id);
+            await push("/pois");
             //return poi;
 
         } else {
