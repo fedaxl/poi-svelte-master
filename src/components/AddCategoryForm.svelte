@@ -16,6 +16,7 @@
         console.log(success);
         if (success) {
             await push("/categories");
+            console.log("category added");
         } else {
             errorMessage = "Addition of Category not completed - some error occurred";
         }

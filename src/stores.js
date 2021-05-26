@@ -29,7 +29,7 @@ export const mainBar = [{
     title: "Add POI",
     icon: "fas fa-plus-square fa-3x",
     colour: "color:rgb(127,205,255)",
-    link: "/#/addpoi",
+    link: "/#/categories/{id}/pois",
 }, {
     title: "Settings",
     icon: "fas fa-user-edit fa-3x",
