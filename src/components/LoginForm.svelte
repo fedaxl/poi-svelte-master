@@ -12,7 +12,7 @@
         console.log(success);
 
         if (success) {
-            await push("/pois");
+            await push("/home");
         } else {
             let success = await poiService.isadmin(email, password)
             console.log(success);
