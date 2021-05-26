@@ -4,7 +4,7 @@
 </script>
 
 <div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-grid-small" uk-grid>
-    <Title title="Keep Calm and go to the Beach" subTitle="subtitle" />
+    <Title title="POI - Lighthouses of Ireland" subTitle="subtitle" />
     <div>
         <ul class="uk-iconnav uk-margin-left uk-margin-right">
             {#each $navBar.bar as nav}
