@@ -32,8 +32,8 @@
         poi = await poiService.getOnePoi(id)
         if (poi) {
 
-            await push("/viewpoi");
-            //return poi;
+            await push("/view-poi");
+            return poi;
 
         } else {
             errorMessage = "POI not completed - some error occurred";
@@ -52,9 +52,6 @@
             Name
         </th>
         <th>
-            Intro
-        </th>
-        <th>
             Category
         </th>
         <th>
@@ -66,9 +63,6 @@
             <tr>
                 <td><a on:click={showPoi(poi._id)}>
                     {poi.name}
-                </a></td>
-                <td><a on:click={showPoi(poi._id)}>
-                    {poi.descshort}
                 </a></td>
                 <td>
                     {poi.category.name}
