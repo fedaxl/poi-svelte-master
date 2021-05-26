@@ -109,7 +109,7 @@ export class PoiService {
         }
     }
 
-    async addPoi(name, description, latitude, longitude, category) {
+    async addPoi(name, description, latitude, longitude, category, image) {
         try {
             const poi = {
                 name: name,
@@ -117,6 +117,7 @@ export class PoiService {
                 latitude: latitude,
                 longitude: longitude,
                 category: category,
+                image: image,
             };
             const response = await axios.post(this.baseUrl + "/api/categories/" + category._id + "/pois", poi);
             return response.status == 200;
