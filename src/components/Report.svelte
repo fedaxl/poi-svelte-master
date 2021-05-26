@@ -1,7 +1,7 @@
 <script>
     import {getContext, onMount} from 'svelte'
     import {push} from "svelte-spa-router";
-    import lighthouse from "/src/assets/lighthouse.png";
+    import redlighthouse from "/src/assets/red-lighthouse.jpg";
 
 
     const poiService = getContext("PoiService");
@@ -28,20 +28,20 @@
 
    </script>
 
-<div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src={lighthouse} uk-img>
+<div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src={redlighthouse} uk-img>
     <div class="uk-grid-column-large uk-grid-row-large uk-text-left" uk-grid>
         <div>
             <i class style="color:black">Report:</i>
         </div>
         <div>
-            <i class="fas fa-users fa-2x" style="color:black">{userCount} users</i>
+            <i style="color:black">{userCount} users</i>
         </div>
         <div>
-            <i class="fas fa-umbrella-beach fa-2x" style="color:black">{poiCount} contributions</i>
+            <i style="color:black">{poiCount} pois</i>
 
         </div>
         <div>
-            <i class="fas fa-layer-group fa-2x" style="color:black">{categoryCount} categories</i>
+            <i style="color:black">{categoryCount} categories</i>
         </div>
     </div>
 </div>
