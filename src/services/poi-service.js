@@ -15,6 +15,8 @@ export class PoiService {
         }
     }
 
+    // CATEGORIES
+
     async getCategories() {
         try {
             const response = await axios.get(this.baseUrl + "/api/categories")
@@ -22,50 +24,6 @@ export class PoiService {
             return this.categoryList;
         } catch (error) {
             return [];
-        }
-    }
-
-    async getPois() {
-        try {
-            const response = await axios.get(this.baseUrl + "/api/pois")
-            this.poiList = await response.data;
-            return this.poiList;
-        } catch (error) {
-            return [];
-        }
-    }
-
-    async getImages() {
-        try {
-            const response = await axios.get(this.baseUrl + "/api/pois/addimage")
-            this.imageList = await response.data;
-            return this.imageList;
-        } catch (error) {
-            return [];
-        }
-    }
-
-    async getUsers() {
-        try {
-            const response = await axios.get(this.baseUrl + "/api/users")
-            this.userList = await response.data;
-            return this.userList;
-        } catch (error) {
-            return [];
-        }
-    }
-
-    async getOnePoi(id) {
-        try {
-            const response = await axios.get(this.baseUrl + "/api/pois/" + id )
-            this.poi = await response.data;
-            poi.set({
-                id: id
-            })
-            console.log(response.data);
-            return this.poi;
-        } catch (error) {
-           // return [];
         }
     }
 
@@ -83,6 +41,60 @@ export class PoiService {
         }
     }
 
+
+    async addCategory(name) {
+        try {
+            const category = {
+                name: name
+            };
+            console.log(category);
+            const response = await axios.post(this.baseUrl + "/api/categories", category);
+            console.log(response);
+            return response.status == 200;
+        } catch (error) {
+            return false;
+        }
+    }
+
+
+    async deleteCategory(id) {
+        try {
+            console.log("in the poi-service deleteCategory")
+            const response = await axios.delete(`${this.baseUrl}/api/categories/${id}`);
+            console.log(response.data)
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    // POIS
+
+    async getPois() {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/pois")
+            this.poiList = await response.data;
+            return this.poiList;
+        } catch (error) {
+            return [];
+        }
+    }
+
+    async getOnePoi(id) {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/pois/" + id )
+            this.poi = await response.data;
+            poi.set({
+                id: id
+            })
+            console.log(response.data);
+            return this.poi;
+        } catch (error) {
+            // return [];
+        }
+    }
+
+
     async getCategoryPois(id) {
         try {
             const response = await axios.get(this.baseUrl + "/api/pois/"+ id +"/category")
@@ -96,6 +108,84 @@ export class PoiService {
             return [];
         }
     }
+
+    async addPoi(name, description, latitude, longitude, category) {
+        try {
+            const poi = {
+                name: name,
+                description: description,
+                latitude: latitude,
+                longitude: longitude,
+                category: category,
+            };
+            const response = await axios.post(this.baseUrl + "/api/categories/" + category._id + "/pois", poi);
+            return response.status == 200;
+        } catch (error) {
+            return false;
+        }
+    }
+
+
+    async updatePoi(name, description, category, latitude, longitude, user ){
+        try {
+            const poiDetails = {
+                name: name,
+                description: description,
+                category: category,
+                latitude: latitude,
+                longitude: longitude,
+                user: user,
+            };
+            console.log(poiDetails);
+            const response = await axios.put(`${this.baseUrl}/api/pois/update/${id}`, poiDetails);
+            console.log(response.data)
+            const newPoi = await response.data;
+            poi.set(newPoi);
+            return true;
+        } catch (error) {
+            return false;
+        }
+
+    }
+
+    async deletePoi(id) {
+        try {
+            console.log("in the poi-service deletePOi")
+            const response = await axios.delete(`${this.baseUrl}/api/pois/${id}`);
+            console.log(response.data)
+            const newPoi = await response.data;
+            user.set(newPoi);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+
+    // IMAGES
+
+    async getImages() {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/pois/addimage")
+            this.imageList = await response.data;
+            return this.imageList;
+        } catch (error) {
+            return [];
+        }
+    }
+
+    // USERS
+
+    async getUsers() {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/users")
+            this.userList = await response.data;
+            return this.userList;
+        } catch (error) {
+            return [];
+        }
+    }
+
 
     async login(email, password) {
         try {
@@ -131,59 +221,7 @@ export class PoiService {
     }
 
 
-    async addPoi(name, description, latitude, longitude, category) {
-        try {
-            const poi = {
-                name: name,
-                description: description,
-                latitude: latitude,
-                longitude: longitude,
-                category: category,
-            };
-            const response = await axios.post(this.baseUrl + "/api/categories/" + category._id + "/pois", poi);
-            return response.status == 200;
-        } catch (error) {
-            return false;
-        }
-    }
 
-    async addCategory(name, description) {
-        try {
-            const category = {
-                name: name,
-                description: description,
-            };
-            console.log(category);
-            const response = await axios.post(this.baseUrl + "/api/categories", category);
-            console.log(response);
-            return response.status == 200;
-        } catch (error) {
-            return false;
-        }
-    }
-
-    async updatePoi(name, description, latitude, longitude, id, category){
-        try {
-            const poiDetails = {
-                name: name,
-                description: description,
-                latitude: latitude,
-                longitude: longitude,
-                _id: id,
-                category: category
-            };
-            console.log(id);
-            console.log(poiDetails);
-            const response = await axios.put(`${this.baseUrl}/api/pois/update/${id}`, poiDetails);
-            console.log(response.data)
-            const newPoi = await response.data;
-            poi.set(newPoi);
-            return true;
-        } catch (error) {
-            return false;
-        }
-
-}
 
     async signup(firstName, lastName, email, password) {
         try {
@@ -234,21 +272,6 @@ export class PoiService {
         }
     }
 
-
-
-    async deletePoi(id) {
-        try {
-            console.log("in the poi-service deletePOi")
-            const response = await axios.delete(`${this.baseUrl}/api/pois/${id}`);
-            console.log(response.data)
-            const newPoi = await response.data;
-            user.set(newPoi);
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
-
     async deleteUser(id) {
         try {
             console.log("in the poi-service deleteUser")
@@ -256,17 +279,6 @@ export class PoiService {
             console.log(response.data)
             const newUser = await response.data;
             user.set(newUser);
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
-
-    async deleteCategory(id) {
-        try {
-            console.log("in the poi-service deleteCategory")
-            const response = await axios.delete(`${this.baseUrl}api/categories/${id}`);
-            console.log(response.data)
             return true;
         } catch (error) {
             return false;

@@ -19,7 +19,7 @@ export const mainBar = [{
     title: "Report",
     icon: "fas fa-map-marked fa-3x",
     colour: "color:rgb(6, 66, 115)",
-    link: "/#/pois",
+    link: "/#/home",
 }, {
     title: "Poi Map",
     icon: "fas fa-globe-europe fa-3x",
