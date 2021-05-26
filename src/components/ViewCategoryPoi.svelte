@@ -33,7 +33,7 @@
         if (poi) {
 
             await push("/view-poi/" + id);
-            return poi;
+            //return poi;
 
         } else {
             errorMessage = "POI not completed - some error occurred";
