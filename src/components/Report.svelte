@@ -31,17 +31,17 @@
 <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src={lighthouse} uk-img>
     <div class="uk-grid-column-large uk-grid-row-large uk-text-left" uk-grid>
         <div>
-            <i class="fas fa-globe-europe fa-2x" style="color:white">We are:</i>
+            <i class style="color:black">Report:</i>
         </div>
         <div>
-            <i class="fas fa-users fa-2x" style="color:white">{userCount} users</i>
+            <i class="fas fa-users fa-2x" style="color:black">{userCount} users</i>
         </div>
         <div>
-            <i class="fas fa-umbrella-beach fa-2x" style="color:white">{poiCount} contributions</i>
+            <i class="fas fa-umbrella-beach fa-2x" style="color:black">{poiCount} contributions</i>
 
         </div>
         <div>
-            <i class="fas fa-layer-group fa-2x" style="color:white">{categoryCount} categories</i>
+            <i class="fas fa-layer-group fa-2x" style="color:black">{categoryCount} categories</i>
         </div>
     </div>
 </div>

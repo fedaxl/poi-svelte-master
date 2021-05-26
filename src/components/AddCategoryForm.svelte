@@ -15,7 +15,7 @@
         const success = await poiService.addCategory(name)
         console.log(success);
         if (success) {
-            await push("/pois");
+            await push("/categories");
         } else {
             errorMessage = "Addition of Category not completed - some error occurred";
         }
