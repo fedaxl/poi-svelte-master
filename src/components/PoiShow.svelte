@@ -77,105 +77,69 @@
     }
 </script>
 
-<div class="uk-container uk-margin">
-    <div class="uk-inline uk-width-1-1 uk-text-center" uk-grid>
-        <h2>{name}</h2>
-    </div>
-    <div class="uk-text-center uk-flex-center uk-flex-middle" uk-grid>
-        <div class="uk-width-2-3">
-            <div class="uk-card uk-card-default uk-card-body"><img src="{poiView.poi.image}"></div>
-        </div>
-        <div class="uk-width-1-3">
-            <div class="uk-card uk-card-default uk-card-body">{description}</div>
-        </div>
-    </div>
-    <div class="uk-text-left uk-flex-center uk-flex-top" uk-grid>
-        <div class="uk-width-2-5">
-            <h4>Current weather:</h4>
-            <p>Clouds: {clouds}</p>
-            <p>Temperature: {temperature}C</p>
-            <p>Feels like: {feelsLike}C</p>
-            <p>Wind Speed: {windSpeed}</p>
-            <p>Humidity: {humidity}%</p>
-        </div>
-
-        <div class="uk-width-2-5">
-            <div class="uk-card uk-card-small uk-card-default uk-card-body">
-                <h4>Short Description:</h4>
-                <h5>Category: {category.name}</h5>
-                <p></p>
-                <h5>Added By: {contributor.firstName} {contributor.lastName}</h5>
+div class="uk-container">
+<div class="uk-margin"></div>
+<h3>{name}</h3>
+<div class="uk-text-center uk-grid" uk-grid="">
+    <div class="uk-width-expand@m uk-animation-slide-left uk-first-column">
+        <div id="map-main" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="height: 560px; position: relative;">
+        <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-text-center uk-text-small uk-grid" uk-grid="">
+                <div class="uk-width-expand@m uk-first-column">
+                    <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                        <caption>GPS-compatible</caption>
+                        <table class="uk-table uk-table-divider uk-table-small">
+                            <tbody>
+                            <tr>
+                                <td>Latitude</td> <td>{poi.latitude}</td>
+                            </tr>
+                            <tr><td>Longitude</td> <td>{poi.longitude}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <div class="uk-width-1-2@m">
+                <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                    <caption>Category</caption>
+                    <table class="uk-table uk-table-divider uk-table-small">
+                        <tbody>
+                        <tr>
+                            <td>Location</td> <td>{poi.category.name}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="uk-width-1-5">
-            <div class="uk-card uk-card-small uk-card-default uk-card-body">
-                <h4>Latitude</h4>
-                <p>{latitude}</p>
-                <h4>Longitude</h4>
-                <p>{longitude}</p>
+            </div>
+            <div class="uk-text-center uk-text-small uk-grid" uk-grid="">
+                <div class="uk-width-expand@m uk-first-column">
+                    <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                        <caption>Local Weather</caption>
+                    </div>
+                            <div class="uk-text-left uk-flex-center uk-flex-top" uk-grid>
+                                <div class="uk-width-2-5">
+                                    <h4>Current weather:</h4>
+                                    <p>Clouds: {clouds}</p>
+                                    <p>Temperature: {temperature}C</p>
+                                    <p>Feels like: {feelsLike}C</p>
+                                    <p>Wind Speed: {windSpeed}</p>
+                                    <p>Humidity: {humidity}%</p>
+                                </div>
+                </div>
+            </div></div>
+    </div>
+    <div class="uk-width-1-3@m uk-animation-slide-right">
+        <div class="ui segment">
+            <div class="description"><p>
+                <strong>{poi.name}: </strong>{poi.description}
+            </p>
             </div>
         </div>
     </div>
 </div>
-
-<form on:submit|preventDefault={save}>
-    <div class="uk-margin uk-text-left">
-        <div class="uk-margin">
-            <label class="uk-form-label">Name</label>
-            <div class="uk-inline uk-width-1-1">
-               <input bind:value={name} class="uk-input uk-form-large" type="text" name="name">
-            </div>
-            <label class="uk-form-label">Description</label>
-            <div class="uk-inline uk-width-1-1">
-                <input bind:value={description} class="uk-input uk-form-large" type="text" name="description">
-            </div>
-            <label class="uk-form-label">Latitude</label>
-            <div class="uk-inline uk-width-1-1">
-                <input bind:value={latitude} class="uk-input uk-form-large" type="number" step="any" name="latitude">
-            </div>
-            <label class="uk-form-label">Longitude</label>
-            <div class="uk-inline uk-width-1-1">
-                <input bind:value={longitude} class="uk-input uk-form-large" type="number" step="any" name="longitude">
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin uk-text-left">
-        <div class="uk-form-label">Select Category </div>
-        <div class="uk-form-controls ">
-            {#each categoryList as category, i}
-                <label>
-                    <input bind:group={selectedCategory} value={i} class="uk-radio" type="radio" name="category" />
-                    {category.name}
-                </label>
-                <br>
-            {/each}
-        </div>
-    </div>
-    <div class="uk-margin">
-        <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Save Updates</button>
-    </div>
-    {#if message}
-        <div class="uk-text-left uk-text-small">
-            {message}
-        </div>
-    {/if}
-</form>
-
-<div class="uk-card uk-card-primary uk-card-body">
-    <h3 class="uk-card-title">Upload a new Image to the Gallery</h3>
-    <form class="uk-form" action="/addimage/{poi.id}" method="POST" enctype="multipart/form-data">
-        <div class="uk-margin">
-            <div class="uk-form-controls">
-                <input type="file" class="uk-input" name="image" accept="image/png, image/jpeg">
-            </div>
-        </div>
-        <p uk-margin>
-            <input type="submit" value="Upload" class="uk-button uk-button-default">
-        </p>
-    </form>
+<div class="uk-margin">
+    <a href="/delete-poi/{poi._id}" class="uk-icon-link" uk-icon="trash">Delete POI</a>
+    <a href="/update-poi/{poi._id}" class="uk-icon-link" uk-icon="pencil">Update POI</a>
 </div>
-
-
-
-
+<div class="uk-margin"></div>
+</div>
 
