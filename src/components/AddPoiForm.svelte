@@ -42,12 +42,6 @@
             </div>
              </div>
             <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Enter a Description</label>
-                <div class="uk-form-controls">
-                    <input bind:value={category} class="uk-input" id="rm-stacked-text" type="text" name="category" placeholder="Category">
-                </div>
-            </div>
-            <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-text">Enter Latitude</label>
                 <div class="uk-form-controls">
                     <input bind:value={latitude} class="uk-input" id="m-stacked-text" type="number" step="any" name="latitude" placeholder="Latitude">
