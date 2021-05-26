@@ -31,7 +31,7 @@
 <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src={redlighthouse} uk-img>
     <div class="uk-grid-column-large uk-grid-row-large uk-text-left" uk-grid>
         <div>
-            <i class style="color:black">Report:</i>
+            <i class style="color:black">Website Report:</i>
         </div>
         <div>
             <i style="color:black">{userCount} users</i>

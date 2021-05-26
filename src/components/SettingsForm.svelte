@@ -23,7 +23,7 @@
         let success = await poiService.updateSettings(firstName, lastName, email, password, $user.id)
         if (success) {
             message = "Settings updated";
-            await push("/pois");
+            await push("/home");
         } else {
             message = "Error Trying to save settings";
         }
