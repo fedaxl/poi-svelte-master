@@ -141,5 +141,4 @@ div class="uk-container">
     <a href="/update-poi/{poi._id}" class="uk-icon-link" uk-icon="pencil">Update POI</a>
 </div>
 <div class="uk-margin"></div>
-</div>
-
+    </div></div>
