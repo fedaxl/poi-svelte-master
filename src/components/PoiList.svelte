@@ -30,7 +30,7 @@
         poi = await poiService.getOnePoi(id)
         if (poi) {
 
-            await push("/view-poi");
+            await push("/pois/ + id");
             //return poi;
 
         } else {
