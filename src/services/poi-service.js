@@ -167,12 +167,36 @@ export class PoiService {
 
     async getImages() {
         try {
-            const response = await axios.get(this.baseUrl + "/api/pois/addimage")
+            const response = await axios.get(this.baseUrl + "/api/images")
             this.imageList = await response.data;
             return this.imageList;
         } catch (error) {
             return [];
         }
+    }
+
+    async getImage(id) {
+        try {
+            const response = await axios.get(this.baseUrl + '/api/images/' + id);
+            return response.data;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    async createImage(newImage) {
+        const response = await axios.post(this.baseUrl + '/api/images', newImage);
+        return response.data;
+    }
+
+    async deleteAllImages() {
+        const response = await axios.delete(this.baseUrl + '/api/images');
+        return response.data;
+    }
+
+    async deleteOneImage(poi_id, img_id) {
+        const response = await axios.delete(this.baseUrl + '/api/poi/'+poi_id+'/images/' + img_id);
+        return response.data;
     }
 
     // USERS
